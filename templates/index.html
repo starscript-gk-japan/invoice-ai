@@ -14,14 +14,17 @@
   <div class="container mt-4">
     <h1 class="text-center mb-4">InvoiceSorter AI (Amounts Only)</h1>
 
+    <!-- PDF upload form -->
     <form action="/" method="post" enctype="multipart/form-data" class="card p-4 shadow-sm mb-4 mx-auto">
       <label class="form-label">Upload your PDF invoice</label>
+      <!-- English message shown as file input tooltip -->
       <input type="file" name="pdf" class="form-control mb-3" accept=".pdf" required
-             title="Please select a PDF file"> <!-- 英語メッセージ -->
-      <button type="submit" class="btn btn-primary w-100">Analyze PDF</button>
+             title="Please select a PDF file">
+      <button type="submit" class="btn btn-primary w-100">Analyze Invoice</button>
     </form>
 
     {% if result %}
+    <!-- Display extracted amounts and AI comment -->
     <div class="card mt-4 p-4 shadow-sm mx-auto">
       <h3>Extracted Amounts</h3>
       

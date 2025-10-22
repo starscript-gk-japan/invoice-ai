@@ -15,13 +15,13 @@ def index():
             text = extract_text(pdf_file)
             amounts = extract_amounts_only(text)
             comment = generate_ai_comment(text)
-            # 金額抽出結果にコメントを追加
+            # Add AI-generated comment to the extracted amount results
             amounts["comment"] = comment
             result = amounts
     return render_template("index.html", result=result)
 
 def extract_text(pdf):
-    """PDFの全テキスト抽出"""
+    """Extract all text content from the PDF"""
     text = ""
     with fitz.open(stream=pdf.read(), filetype="pdf") as doc:
         for page in doc:
@@ -29,7 +29,7 @@ def extract_text(pdf):
     return text
 
 def extract_amounts_only(text):
-    """金額だけ抽出"""
+    """Extract only monetary amounts"""
     amounts = re.findall(r"\$[0-9,]+\.\d{2}", text)
 
     line_items = amounts[:-3] if len(amounts) > 3 else []
@@ -45,7 +45,7 @@ def extract_amounts_only(text):
     }
 
 def generate_ai_comment(text):
-    """超簡易AIコメント"""
+    """Simple AI-based comment generator"""
     examples = [
         "This invoice includes consulting and support services.",
         "This invoice is for monthly subscription billing.",
