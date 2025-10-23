@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvoiceSorter AI - Amounts Only</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <style>
+    .container { max-width: 800px; }
+    .card { max-width: 100%; }
+  </style>
+</head>
+<body class="bg-light p-4">
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">InvoiceSorter AI (Amounts Only)</h1>
+
+    <!-- PDF upload form -->
+    <form action="/" method="post" enctype="multipart/form-data" class="card p-4 shadow-sm mb-4 mx-auto">
+      <label class="form-label">Upload your PDF invoice</label>
+      <!-- English message shown as file input tooltip -->
+      <input type="file" name="pdf" class="form-control mb-3" accept=".pdf" required
+             title="Please select a PDF file">
+      <button type="submit" class="btn btn-primary w-100">Analyze Invoice</button>
+    </form>
+
+    {% if result %}
+    <!-- Display extracted amounts and AI comment -->
+    <div class="card mt-4 p-4 shadow-sm mx-auto">
+      <h3>Extracted Amounts</h3>
+      
+      {% if result['Line Item Amounts'] %}
+      <p><strong>Line Item Amounts:</strong> {{ result['Line Item Amounts'] | join(", ") }}</p>
+      {% else %}
+      <p><strong>Line Item Amounts:</strong> N/A</p>
+      {% endif %}
+
+      <p><strong>Subtotal:</strong> {{ result.Subtotal }}</p>
+      <p><strong>Sales Tax:</strong> {{ result['Sales Tax'] }}</p>
+      <p><strong>Total:</strong> {{ result.Total }}</p>
+
+      <h4 class="mt-3">💬 AI Comment</h4>
+      <p>{{ result.comment }}</p>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
