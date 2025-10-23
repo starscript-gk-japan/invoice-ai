@@ -1,20 +1,7 @@
-# Flask Webアプリ
 Flask==3.0.2
-
-# PDF操作
 PyPDF2==3.0.1
-
-# PyTorch：Renderでインストール可能な最新安定版を指定
 torch>=2.5.0,<3.0.0
-
-# Transformers：tokenizers不要なバージョンに置き換え
 transformers==4.44.2
-
-# SentencePiece：軽量版
 sentencepiece==0.1.99
-
-# Safetensors
 safetensors==0.6.2
-
-# HTTPリクエスト
 requests>=2.32.5
