@@ -45,11 +45,28 @@ def extract_amounts_only(text):
     }
 
 def generate_ai_comment(text):
-    """Simple AI-based comment generator"""
+    """Simple AI-based comment generator with 20 examples"""
     examples = [
         "This invoice includes consulting and support services.",
         "This invoice is for monthly subscription billing.",
-        "This invoice contains hardware purchase and shipping fees."
+        "This invoice contains hardware purchase and shipping fees.",
+        "This invoice details software licensing charges.",
+        "This invoice covers cloud service subscription fees.",
+        "This invoice is for website development and maintenance.",
+        "This invoice lists training and onboarding services.",
+        "This invoice records office supplies and stationery purchase.",
+        "This invoice is for marketing and advertising services.",
+        "This invoice details IT support and troubleshooting fees.",
+        "This invoice covers subscription to productivity tools.",
+        "This invoice is for graphic design and creative services.",
+        "This invoice records travel and accommodation expenses.",
+        "This invoice details consulting for project management.",
+        "This invoice lists subscription fees for SaaS tools.",
+        "This invoice covers customer support and helpdesk services.",
+        "This invoice is for event organization and coordination.",
+        "This invoice details cloud hosting and server maintenance fees.",
+        "This invoice lists legal and compliance consulting fees.",
+        "This invoice is for research and data analysis services."
     ]
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(examples + [text])
